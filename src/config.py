@@ -4,15 +4,15 @@ from albumentations.pytorch import ToTensorV2
 
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-LEARNING_RATE = 9e-3
+LEARNING_RATE = 0.01
 BATCH_SIZE = 128
 NUM_EPOCHS = 15
 NUM_WORKERS = 2
 SCHEDULER_PATIENCE = 1
 SCHEDULER_FACTOR = 0.1
 MAX_NORM = 0.8
-LOAD_MODEL = False
-SAVE_MODEL = True
+LOAD_MODEL = True
+SAVE_MODEL = False
 MODE = "min"
 SCHEDULER = "RON"
 CHECKPOINT_DIR = "./model/my_checkpoint.pth.tar"
