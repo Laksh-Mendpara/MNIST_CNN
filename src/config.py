@@ -8,16 +8,16 @@ LEARNING_RATE = 9e-3
 BATCH_SIZE = 128
 NUM_EPOCHS = 15
 NUM_WORKERS = 2
-SCHEDULER_PATIENCE = 0
-SCHEDULER_FACTOR = 0.4
+SCHEDULER_PATIENCE = 1
+SCHEDULER_FACTOR = 0.1
 MAX_NORM = 0.8
 LOAD_MODEL = False
-SAVE_MODEL = False
+SAVE_MODEL = True
 MODE = "min"
 SCHEDULER = "RON"
-CHECKPOINT_DIR = "my_checkpoint.pth.tar"
+CHECKPOINT_DIR = "./model/my_checkpoint.pth.tar"
 WANDB_PROJECT_NAME = "MNIST cnn fin"
-# WANDB_ENTITY_NAME = "try06 param - 10700"
+# WANDB_ENTITY_NAME = "try06 param - 8.01k"
 WANDB_CONFIG = {
     "learning_rate": LEARNING_RATE,
     "batch_size": BATCH_SIZE,

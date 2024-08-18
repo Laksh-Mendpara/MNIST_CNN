@@ -46,7 +46,7 @@ def plot_graph(train_data, test_data, label):
     plt.ylabel(label)
     plt.title(label + " vs Epochs")
     plt.legend()
-    plt.savefig("./Results/" + label + "_plot.png")
+    plt.savefig("./results/" + label + "_plot.png")
     plt.show()
     plt.clf()
 

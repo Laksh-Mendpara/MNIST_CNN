@@ -106,7 +106,7 @@ def train_function(model, optimizer, scheduler, criterion, epoch):
 def main():
     print("Running on Device -", config.DEVICE)
     model = CNN().to(config.DEVICE)
-    optimizer = optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
+    optimizer = optim.Adam(model.parameters(), lr=config.LEARNING_RATE, betas=(0.95, 0.999))
     criterion = nn.CrossEntropyLoss()
     if config.LOAD_MODEL:
         utils.load_checkpoint(config.CHECKPOINT_DIR, model, optimizer, config.LEARNING_RATE)
@@ -125,6 +125,7 @@ def main():
 
 
 if __name__ == "__main__":
+    # torch.multiprocessing.set_start_method('spawn', force=True)
     main()
     utils.plot_graph(record["Train Loss"], record["Test Loss"], label="Loss")
     utils.plot_graph(record["Train Accuracy"], record["Test Accuracy"], label="Accuracy")
