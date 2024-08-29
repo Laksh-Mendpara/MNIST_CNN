@@ -13,9 +13,9 @@ from dataset import MNISTDataset
 import math
 
 # Initializing wandb
-wandb.init(project=config.WANDB_PROJECT_NAME,
-           name=utils.create_wandb_name(config.WANDB_CONFIG, config.MODE, config.SCHEDULER, "8092"),
-           config=config.WANDB_CONFIG)
+# wandb.init(project=config.WANDB_PROJECT_NAME,
+#            name=utils.create_wandb_name(config.WANDB_CONFIG, config.MODE, config.SCHEDULER, "8092"),
+#            config=config.WANDB_CONFIG)
 
 # Preparing Dataset
 train_dataset = datasets.MNIST(root='dataset/', train=True, download=True)
@@ -89,7 +89,7 @@ def train_function(model, optimizer, scheduler, criterion, epoch):
             "Test Accuracy": test_accuracy
         }
 
-        wandb.log(metrics, step=epoch+1)
+        # wandb.log(metrics, step=epoch+1)
 
         if config.SCHEDULER == "RON" and config.MODE == "max":
             scheduler.step(test_accuracy)
@@ -122,7 +122,7 @@ def main():
         q = math.floor(len(train_dataset)/config.BATCH_SIZE)
         scheduler = lr_scheduler.CosineAnnealingLR(optimizer, T_max=q)
 
-    wandb.watch(model, criterion, log="all", log_freq=config.WANDB_LOG_FREQ)
+    # wandb.watch(model, criterion, log="all", log_freq=config.WANDB_LOG_FREQ)
 
     for epoch in range(config.NUM_EPOCHS):
         train_function(model, optimizer, scheduler, criterion, epoch)
